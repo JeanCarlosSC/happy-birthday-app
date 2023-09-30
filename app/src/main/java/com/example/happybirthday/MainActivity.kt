@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    GreetingText(message = "Happy Birthday Brandon!", from = "From Jean Carlos Santoya Cabrera")
                 }
             }
         }
@@ -30,18 +31,31 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText (message: String, modifier: Modifier = Modifier) {
-    Text(
-        text = message,
-        fontSize = 100.sp,
-        lineHeight = 120.sp
-    )
+fun GreetingText (message: String, from: String, modifier: Modifier = Modifier) {
+    Column (
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
+        Text(
+            text = message,
+            fontSize = 100.sp,
+            lineHeight = 120.sp,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = from,
+            fontSize = 36.sp,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(alignment = Alignment.End)
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingText(message = "Happy Birthday Brandon!")
+        GreetingText(message = "Happy Birthday Brandon!", from = "Jean Carlos Santoya Cabrera")
     }
 }
